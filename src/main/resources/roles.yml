@@ -1,0 +1,24 @@
+membro:
+  name: "Membro"
+  order: 2
+  tag: "§7"
+  partysize: 5
+  multiplier: 1
+  multicolor: false
+  permission: "role.member"
+vip:
+  name: "VIP"
+  order: 1
+  tag: "§aVIP"
+  partysize: 8
+  multiplier: 2
+  multicolor: true
+  permission: "role.vip"
+vipplus:
+  name: "VIP+"
+  order: 0
+  tag: "§aVIP§b+"
+  partysize: 8
+  multiplier: 2
+  multicolor: true
+  permission: "role.vipplus"
