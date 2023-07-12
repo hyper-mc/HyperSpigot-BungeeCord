@@ -3,14 +3,20 @@ package net.hyper.mc.bungee;
 import balbucio.responsivescheduler.RSTask;
 import balbucio.responsivescheduler.ResponsiveScheduler;
 import net.hyper.mc.bungee.network.NetworkManager;
+import net.hyper.mc.bungee.queue.QueueManager;
 import net.hyper.mc.bungee.role.RoleManager;
 import net.hyper.mc.msgbrokerapi.HyperMessageBroker;
+import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.YamlConfiguration;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public final class BungeePlugin extends Plugin {
 
@@ -20,6 +26,10 @@ public final class BungeePlugin extends Plugin {
     private HyperMessageBroker broker;
     private RoleManager roleManager;
     private NetworkManager networkManager;
+    private QueueManager queueManager;
+
+    public static List<ServerInfo> LOBBIES = new ArrayList<>();
+    public static List<ServerInfo> WAIT_LOBBIES = new ArrayList<>();
 
     @Override
     public void onEnable() {
@@ -27,6 +37,8 @@ public final class BungeePlugin extends Plugin {
         scheduler = new ResponsiveScheduler();
         broker = new HyperMessageBroker(configuration.getString("hypermessagebroker.ip"), configuration.getInt("hypermessagebroker.port"), scheduler);
         roleManager = new RoleManager(this, broker);
+        queueManager = new QueueManager(this, broker, configuration);
+        networkManager = new NetworkManager(broker);
         scheduler.repeatTask(new RSTask() {
             @Override
             public void run() {
@@ -43,6 +55,18 @@ public final class BungeePlugin extends Plugin {
                 Files.copy(this.getClass().getResourceAsStream("/config.yml"), file.toPath());
             }
             configuration = YamlConfiguration.getProvider(YamlConfiguration.class).load(file);
+            for(String s : configuration.getStringList("lobbies")){
+                ServerInfo sv = ProxyServer.getInstance().getServerInfo(s);
+                if(sv != null){
+                    LOBBIES.add(sv);
+                }
+            }
+            for(String s : configuration.getStringList("wait-lobbies")){
+                ServerInfo sv = ProxyServer.getInstance().getServerInfo(s);
+                if(sv != null){
+                    WAIT_LOBBIES.add(sv);
+                }
+            }
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -50,5 +74,12 @@ public final class BungeePlugin extends Plugin {
 
     @Override
     public void onDisable() {
+    }
+
+    public static ServerInfo getLobby(){
+        return LOBBIES.stream().min(Comparator.comparingInt(serverInfo -> serverInfo.getPlayers().size())).get();
+    }
+    public static ServerInfo getWaitLobby(){
+        return WAIT_LOBBIES.stream().min(Comparator.comparingInt(serverInfo -> serverInfo.getPlayers().size())).get();
     }
 }

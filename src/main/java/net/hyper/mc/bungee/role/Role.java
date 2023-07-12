@@ -12,5 +12,6 @@ public class Role {
     private int partysize;
     private int multiplier;
     private boolean multicolor;
+    private boolean jumpqueue;
     private String permission;
 }

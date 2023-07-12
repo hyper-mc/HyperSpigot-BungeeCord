@@ -49,6 +49,7 @@ public class RoleManager {
                     configuration.getInt(key+".partysize"),
                     configuration.getInt(key+".multiplier"),
                     configuration.getBoolean(key+".multicolor"),
+                    configuration.getBoolean(key+".jumpqueue"),
                     configuration.getString(key+".permission"));
             roles.put(role.getName(), role);
         }
