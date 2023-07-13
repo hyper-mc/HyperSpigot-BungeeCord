@@ -3,9 +3,9 @@ hypermessagebroker:
   ip: "localhost"
   port: 25465
 lobbies:
-  "Lobby-1"
+  - "Lobby-1"
 wait-lobbies:
-  "waitlobby"
+  - "waitlobby"
 queue:
   activeCount: 300 # Quantidade necessário para que a fila inicie
   maxCount: 2000 # Quantidade máxima do servidor, onde é necessário esperar outros jogadores sairem
