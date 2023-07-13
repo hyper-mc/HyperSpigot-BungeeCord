@@ -1,0 +1,15 @@
+
+# ITENS DA BUSSOLA
+itens:
+  lobby:
+    slot: 10
+    description:
+      - "§7"
+      - "§7"
+      - "§7"
+    bungee-server:
+      - "Lobby-1"
+      - "Lobby-2"
+      - "Lobby-3"
+    item: ""
+    prime: false # é servidor prime?
