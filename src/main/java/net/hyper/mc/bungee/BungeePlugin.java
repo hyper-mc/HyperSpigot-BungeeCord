@@ -93,7 +93,8 @@ public final class BungeePlugin extends Plugin {
                         sv.getStringList("itens."+s+".description"),
                         sv.getStringList("itens."+s+".bungee-servers"),
                         sv.getString("itens."+s+".item"),
-                        sv.getBoolean("itens."+s+".prime")
+                        sv.getBoolean("itens."+s+".prime"),
+                        sv.getBoolean("itens."+s+".connectable")
                 );
                 SERVER_ITEMS.add(server);
             }
