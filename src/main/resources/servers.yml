@@ -2,6 +2,7 @@
 # ITENS DA BUSSOLA
 itens:
   lobby:
+    name: "§aLobby Principal"
     slot: 10
     description:
       - "§7"
@@ -11,5 +12,6 @@ itens:
       - "Lobby-1"
       - "Lobby-2"
       - "Lobby-3"
-    item: ""
+    item: '{"material":"SKULL_ITEM","amount":1,"data":0,"texture":"http://textures.minecraft.net/texture/3bbc1e4bc898b8835b08431c5b6616ffb7f92be0756b42aa25a1d6fb633606a6"}'
     prime: false # é servidor prime?
+    conectable: true # se é conectavel
