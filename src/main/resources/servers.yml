@@ -5,13 +5,25 @@ itens:
     name: "§aLobby Principal"
     slot: 10
     description:
+      - "§7Lobby Principal tlgd"
       - "§7"
-      - "§7"
-      - "§7"
+      - "§7Va para o lobby"
     bungee-server:
       - "Lobby-1"
       - "Lobby-2"
       - "Lobby-3"
-    item: '{"material":"SKULL_ITEM","amount":1,"data":0,"texture":"http://textures.minecraft.net/texture/3bbc1e4bc898b8835b08431c5b6616ffb7f92be0756b42aa25a1d6fb633606a6"}'
+    item: '{"material":"SKULL_ITEM","amount":1,"data":0,"texture":"3bbc1e4bc898b8835b08431c5b6616ffb7f92be0756b42aa25a1d6fb633606a6"}'
     prime: false # é servidor prime?
     conectable: true # se é conectavel
+  apoiar:
+    name: "§bApoie a Hyper!"
+    slot: 10
+    description:
+      - "§7Ajude-nos a crescer e ainda"
+      - "§7ganhe vantagens e beneficios"
+      - "§7por isto!"
+    bungee-server:
+      - ""
+    item: '{"material":"SKULL_ITEM","amount":1,"data":0,"texture":"3bbc1e4bc898b8835b08431c5b6616ffb7f92be0756b42aa25a1d6fb633606a6"}'
+    prime: false # é servidor prime?
+    conectable: false # se é conectavel
